@@ -18,7 +18,7 @@ animalRouter.post('/', async (c) => {
   try {
     // DATA VALIDATION
     const body = await c.req.json();
-    const result = AnimalSchema.safeParse(body);
+    const result = await AnimalSchema.safeParseAsync(body);
 
     // ERROR RESPONSE
     if (!result.success)

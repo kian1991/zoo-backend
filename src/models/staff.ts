@@ -13,9 +13,11 @@ export class StaffModel {
 
   static async findById(id: number) {
     const result = await getPool().query(
-      `SELECT p.id, b.bezeichnung FROM personal p JOIN beruf b ON p.beruf_id = b.id WHERE id = $1`,
+      `SELECT p.id, b.bezeichnung FROM personal p JOIN beruf b ON p.beruf_id = b.id WHERE p.id = $1`,
       [id]
     );
+
+    console.log('result.rows', result.rows);
     return result.rows; // can be empty arr
   }
 

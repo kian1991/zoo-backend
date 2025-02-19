@@ -17,8 +17,8 @@ export const AnimalSchema = z.object({
   gehege_id: z.number(),
   tierarzt_id: z
     .number()
-    .refine(async (id) => (await StaffModel.findById(id)).length === 0, {
-      message: '',
+    .refine(async (id) => (await StaffModel.findById(id)).length > 0, {
+      message: `There is no vet with the id you provided.`,
     }),
 });
 
