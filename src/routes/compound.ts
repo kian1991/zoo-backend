@@ -18,3 +18,9 @@ compoundRouter.get('/', async (c) => {
     });
   }
 });
+
+compoundRouter.put('/'); // mit ganzem object inkl id
+
+compoundRouter.patch('/:id', (c) => {
+  // .. teilweise update über id
+});
