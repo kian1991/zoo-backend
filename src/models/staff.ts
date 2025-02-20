@@ -16,9 +16,19 @@ export class StaffModel {
       `SELECT p.id, b.bezeichnung FROM personal p JOIN beruf b ON p.beruf_id = b.id WHERE p.id = $1`,
       [id]
     );
-
-    console.log('result.rows', result.rows);
     return result.rows; // can be empty arr
+  }
+
+  static async isVet(id: number) {
+    const result = await getPool().query(
+      `SELECT * FROM personal p 
+      JOIN beruf b ON p.beruf_id = b.id 
+      WHERE p.id = $1 
+      AND b.bezeichnung ILIKE 'tierarzt'`,
+      [id]
+    );
+
+    return result.rows.length > 0;
   }
 
   static async getFreeVets() {

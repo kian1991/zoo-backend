@@ -34,7 +34,7 @@ animalRouter.post('/', async (c) => {
     return c.json(result.data);
   } catch (error) {
     if (error instanceof SyntaxError) {
-      return c.json({ error: 'No JSON body provided.' });
+      return c.json({ error: 'Error Parsing JSON.' });
     }
 
     console.error(error);

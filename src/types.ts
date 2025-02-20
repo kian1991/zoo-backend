@@ -15,11 +15,9 @@ export const AnimalSchema = z.object({
   id: z.number().optional(),
   name: z.string(),
   gehege_id: z.number(),
-  tierarzt_id: z
-    .number()
-    .refine(async (id) => (await StaffModel.findById(id)).length > 0, {
-      message: `There is no vet with the id you provided.`,
-    }),
+  tierarzt_id: z.number().refine(async (id) => await StaffModel.isVet(id), {
+    message: `There is no vet with the id you provided.`,
+  }),
 });
 
 export type Animal = z.infer<typeof AnimalSchema>;
