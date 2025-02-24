@@ -5,7 +5,7 @@ import { HTTPException } from 'hono/http-exception';
 
 export class CompoundModel {
   static async findAll() {
-    const result = await getPool().query(`SELECT * FROM "Gehege"`);
+    const result = await getPool().query(`SELECT * FROM gehege`);
     return result.rows;
   }
 

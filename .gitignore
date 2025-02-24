@@ -1,5 +1,7 @@
 dist/
 
+database/pg-data
+
 # dev
 .yarn/
 !.yarn/releases

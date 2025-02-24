@@ -8,11 +8,7 @@ export function getClient() {
   if (client) {
     return client;
   }
-  client = new pg.Client({
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
+  client = new pg.Client();
   return client;
 }
 
@@ -20,12 +16,7 @@ export function getPool() {
   if (pool) {
     return pool;
   }
-  pool = new pg.Pool({
-    max: 20,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
+  pool = new pg.Pool();
 
   return pool;
 }
