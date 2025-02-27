@@ -21,3 +21,23 @@ export const AnimalSchema = z.object({
 });
 
 export type Animal = z.infer<typeof AnimalSchema>;
+
+// Donation Schema
+// "id" serial PRIMARY KEY,
+//   "spender_name" text,
+//   "datum" date,
+//   "betrag" decimal,
+//   "beleg_url" text
+
+export const DonationSchema = z.object({
+  id: z.number().optional(),
+  spender_name: z.string().min(1).max(64),
+  datum: z.string().date(),
+  betrag: z.coerce
+    .number({ message: 'THATS NOT A NUMBER 😡' })
+    .refine((betrag) => betrag > 0, 'Are you kidding me? Thats negative. 🤡'),
+  beleg_url: z.string().url(),
+});
+
+// type infer
+export type Donation = z.infer<typeof DonationSchema>;
