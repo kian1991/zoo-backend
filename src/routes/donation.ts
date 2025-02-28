@@ -28,7 +28,6 @@ donationRouter.post('/', async (c) => {
     }
 
     // Data is valid here
-
     const insertedDonation = await DonationModel.create(result.data);
 
     return c.json({

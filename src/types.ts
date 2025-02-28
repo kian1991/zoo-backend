@@ -32,7 +32,6 @@ export type Animal = z.infer<typeof AnimalSchema>;
 export const DonationSchema = z.object({
   id: z.number().optional(),
   spender_name: z.string().min(1).max(64),
-  datum: z.string().date(),
   betrag: z.coerce
     .number({ message: 'THATS NOT A NUMBER 😡' })
     .refine((betrag) => betrag > 0, 'Are you kidding me? Thats negative. 🤡'),
